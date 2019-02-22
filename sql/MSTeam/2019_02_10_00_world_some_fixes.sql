@@ -119,3 +119,17 @@ INSERT INTO `waypoint_data` (`id`, `point`, `position_x`, `position_y`, `positio
 (3215790, 32, 974.031, -355.625, -69.1521, 0, 0),
 (3215790, 33, 967.597, -349.477, -71.3905, 0, 0),
 (3215790, 34, 963.267, -343.735, -71.7394, 0, 0);
+UPDATE creature SET spawndist = 0, MovementType = 0 WHERE guid = 177848 AND id = 448;
+DELETE FROM `creature_text` WHERE `CreatureID` IN (448, 46941);
+INSERT INTO `creature_text` (`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextId`, `TextRange`, `comment`) VALUES
+(448, 0, 0, "More bones to gnaw on...", 12, 0, 100, 0, 0, 0, 1871, 0, 'Hogger'),
+(448, 0, 1, "Grrrr... fresh meat!", 12, 0, 100, 0, 0, 0, 1870, 0, 'Hogger'),
+(448, 1, 0, "Yipe!  Help Hogger!", 14, 0, 0, 0, 0, 0, 46936, 0, 'Hogger'),
+(448, 2, 0, "No hurt Hogger!", 14, 0, 0, 0, 0, 0, 47000, 0, 'Hogger'),
+(448, 3, 0, "Hogger is stunned!", 41, 0, 0, 0, 0, 0, 46940, 0, 'Hogger'),
+(448, 4, 0, "Hogger is eating!  Stop him!", 41, 0, 0, 0, 0, 0, 46939, 0, 'Hogger'),
+(448, 5, 0, "Grrr...", 12, 0, 0, 0, 0, 0, 46937, 0, 'Hogger'),
+(448, 6, 0, "Nooooo...", 12, 0, 0, 0, 0, 0, 46938, 0, 'Hogger'),
+(46941, 0, 0, "Right away, General!", 12, 0, 0, 0, 0, 0, 147279, 0, 'High Sorcerer Andromath');
+UPDATE creature_template SET AIName = "", ScriptName = "npc_hogger" WHERE entry = 448;
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 448 AND `source_type` = 0;

@@ -419,125 +419,139 @@ public:
 ## npc_hogger
 ######*/
 
-enum HoggerSpellData
+enum HoggerData
 {
-    SPELL_SUMMON_MINIONS = 87366,
-    SPELL_VICIOUS_SLICE = 87337,
-    SPELL_EATING = 87351,
-    SPELL_TELEPORT_VISUAL_ONLY_1 = 87459,
-    SPELL_TELEPORT_VISUAL_ONLY_2 = 64446,
-    SPELL_BLOODY_STRIKE = 87359
+    /// Hogger + End Event
+    // Spells
+    SPELL_SUMMON_MINIONS                  = 87366,
+    SPELL_VICIOUS_SLICE                   = 87337,
+    SPELL_EATING                          = 87351,
+    SPELL_TELEPORT_VISUAL_ONLY_1          = 87459,
+    SPELL_TELEPORT_VISUAL_ONLY_2          = 64446,
+    SPELL_BLOODY_STRIKE                   = 87359,
+    // Events
+    EVENT_VICIOUS_SLICE                   = 1,
+    EVENT_HAMMOND_GROUP_START_WALKING     = 2,
+    EVENT_RAGAMUFFIN_SAY_WOW              = 3,
+    EVENT_RAGAMUFFIN_SAY_CLAY             = 4,
+    EVENT_DISMOUNT_HAMMOND_CLAY           = 5,
+    EVENT_HOGGER_SAY_GRR                  = 6,
+    EVENT_CLAYS_EXPLAINATION              = 7,
+    EVENT_CLAY_SAYS_TAKE_HIM              = 8,
+    EVENT_HOGGER_SAYS_NOO                 = 9,
+    EVENT_CLAY_SPEAKS_TO_ANDROMATH        = 10,
+    EVENT_ANDROMATH_TEXT                  = 11,
+    EVENT_TELEPORT_BACK                   = 12,
+    EVENT_CHECK_EAT_RANGE                 = 13,
+    EVENT_BLOODY_STRIKE                   = 14,
+    EVENT_RUN_1                           = 15,
+    EVENT_RUN_2                           = 16,
+    // Texts
+    SAY_AGGRO_TEXT                        = 0,
+    YELL_SUMMON_MINIONS_TEXT              = 1,
+    YELL_FINAL_TEXT                       = 2,
+    EMOTE_STUNNED_TEXT                    = 3,
+    EMOTE_EATING_TEXT                     = 4,
+    SAY_GRR_TEXT                          = 5,
+    SAY_NOOOOO_TEXT                       = 6,
+    // General Hammond Clay Texts
+    YELL_OPENING                          = 0,
+    SAY_EXPLAINATION                      = 1,
+    SAY_TAKE_HIM                          = 2,
+    SAY_TO_ANDROMATH                      = 3,
+    // Ragamuffin Texts
+    SAY_CLAY                              = 0,
+    SAY_WOW                               = 1,
+    // High Sorcerer Andromath Texts
+    SAY_TO_HAMMOND_TEXT                   = 0,
+    // Creatures
+    NPC_GENERAL_HAMMOND_CLAY              = 65153,
+    NPC_ANDROMATH                         = 46941,
+    NPC_DUMAS                             = 46940,
+    NPC_HOGGER                            = 448,
+    NPC_EATING_TARGET                     = 45979,
+    NPC_RAGAMUFFIN                        = 46943,
+    NPC_HOGGER_MINION                     = 46932,
+    // Misc
+    DISPLAYID_GENERAL_HAMMOND_CLAYS_MOUNT = 2410,
+    // Hogger Minion Spells
+    SPELL_ADVENTURERS_RUSH                = 87402
 };
 
-enum HoggerEventData
+static const Position GeneralHammondClayCoordinates[4] =
 {
-    EVENT_VICIOUS_SLICE = 1,
-    EVENT_HAMMOND_GROUP_START_WALKING = 2,
-    EVENT_DISMOUNT_HAMMOND_CLAY = 3,
-    EVENT_HOGGER_SAY_GRR = 4,
-    EVENT_CLAYS_EXPLAINATION = 5,
-    EVENT_CLAY_SAYS_TAKE_HIM = 6,
-    EVENT_HOGGER_SAYS_NOO = 7,
-    EVENT_CLAY_SPEAKS_TO_ANDROMATH = 8,
-    EVENT_TELEPORT_BACK = 9,
-    EVENT_CHECK_EAT_RANGE = 10,
-    EVENT_BLOODY_STRIKE = 11
-};
-
-enum HoggerTextData
-{
-    SAY_HOGGER_SUMMON_MINIONS = 2,
-    SAY_EATING = 3,
-    SAY_STUNNED = 4,
-    SAY_BEG = 5,
-    SAY_RAND = 6,
-    SAY_FINAL = 7
-};
-
-enum HammondTextData
-{
-    YELL_OPENING = 0,
-    SAY_EXPLAINATION = 1,
-    SAY_TAKE_HIM = 2,
-    SAY_TO_ANDROMATH = 3
-};
-
-enum RagamuffinTextData
-{
-    SAY_CLAY = 0,
-    SAY_WOW = 1,
-};
-
-enum HoggerCreatures
-{
-    NPC_GENERAL_HAMMOND_CLAY = 65153,
-    NPC_ANDROMATH = 46941,
-    NPC_DUMAS = 46940,
-    NPC_HOGGER = 448,
-    NPC_EATING_TARGET = 45979,
-    NPC_RAGAMUFFIN = 46943,
-    NPC_HOGGER_MINION = 46932
-};
-
-enum HoggerMiscData
-{
-    DISPLAYID_GENERAL_HAMMOND_CLAYS_MOUNT = 2410
-};
-
-// validated positions
-static const Position generalHammondClayPositions[4] =
-{
+    // Validated positions
     { -10125.35f, 650.7324f, 36.05776f },
     { -10128.3f,  656.4648f, 36.05776f },
     { -10131.25f, 662.1973f, 36.05776f },
     { -10135.73f, 668.389f,  35.74807f }
 };
 
-// validated positions
-static const Position andromathPositions[3] =
+static const Position HighSorcererAndromathCoordinates[3] =
 {
+    // Validated positions
     { -10119.2f, 647.913f, 36.36745f },
     { -10123.0f, 656.875f, 36.05776f },
     { -10126.8f, 665.837f, 35.74807f }
 };
 
-// validated positions
-static const Position dumasPositions[3] =
+static const Position HighSorcererDumasCoordinates[3] =
 {
+    // Validated positions
     { -10130.1f, 647.7671f, 36.04665f },
     { -10132.9f, 653.5605f, 36.05776f },
     { -10135.7f, 659.354f,  36.06887f }
 };
 
-// validated positions
-static const Position hoggerPositions[1] =
+static const Position HoggerCoordinates[1] =
 {
+    // Validated positions
     { -10136.9f, 670.009f, 36.03682f }
 };
 
-// validated positions
-static const Position ragamuffinPositions[2] =
+static const Position RagamuffinCoordinates[6] =
 {
+    // Validated positions
+    { -10120.19f, 635.509f, 35.415f },
+    { -10109.51f, 633.51f, 35.8421f },
     { -10127.00f, 651.0f, 36.05776f },
-    { -10123.0f, 651.0f,  36.06887f }
+    { -10123.0f, 651.0f,  36.06887f },
+    { -10102.18f, 630.2f, 36.35133f },
+    { -10103.63f, 619.34f, 38.2921f }
 };
 
 struct npc_hogger : public ScriptedAI
 {
-    npc_hogger(Creature* creature) : ScriptedAI(creature) { }
+    npc_hogger(Creature* creature) : ScriptedAI(creature), summons(me) { }
 
     void Reset() override
     {
         _events.Reset();
+        summons.DespawnAll();
 
         _minionsSummoned = false;
         _endingSceneActive = false;
         _alreadyEaten = false;
         _isEating = false;
 
-        me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_PC);
+        me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_PC | UNIT_FLAG_NON_ATTACKABLE);
         me->SetReactState(REACT_AGGRESSIVE);
         me->SetWalk(false);
+    }
+
+    void JustSummoned(Creature* summon)
+    {
+        summons.Summon(summon);
+
+        if (summon->GetEntry() == NPC_HOGGER_MINION)
+        {
+            for (auto itr : me->getThreatManager().getThreatList())
+                if (Player* player = ObjectAccessor::GetPlayer(*me, itr->getUnitGuid()))
+                {
+                    summon->SetTarget(player->GetGUID());
+                    summon->AI()->AttackStart(player);
+                }
+        }
     }
 
     void DamageTaken(Unit* /*attacker*/, uint32& damage) override
@@ -563,17 +577,22 @@ struct npc_hogger : public ScriptedAI
             RewardPlayers();
         }
 
-        if (_isEating)
+        if (_isEating && me->HasAura(SPELL_EATING))
         {
             _isEating = false;
+
+            Talk(EMOTE_STUNNED_TEXT);
             me->SetReactState(REACT_AGGRESSIVE);
-            Talk(SAY_STUNNED);
+            HoggerStartAttackPlayers();
         }
     }
 
-    void EnterCombat(Unit* /*who*/) override
+    void EnterCombat(Unit* who) override
     {
-        _events.ScheduleEvent(EVENT_VICIOUS_SLICE, 3000);
+        if (who->GetTypeId() == TYPEID_PLAYER && roll_chance_i(30))
+            Talk(SAY_AGGRO_TEXT);
+
+        _events.ScheduleEvent(EVENT_VICIOUS_SLICE, 3s);
     }
 
     void MoveToEatingPosition()
@@ -583,8 +602,9 @@ struct npc_hogger : public ScriptedAI
         if (Creature* target = me->FindNearestCreature(NPC_EATING_TARGET, 100.0f))
         {
             me->SetReactState(REACT_PASSIVE);
-            me->GetMotionMaster()->MovePoint(0, target->GetPositionX(), target->GetPositionY(), target->GetPositionZ(), true);
-            _events.ScheduleEvent(EVENT_CHECK_EAT_RANGE, 200);
+            me->SetTarget(target->GetGUID());
+            me->GetMotionMaster()->MovePoint(0, target->GetPositionX() + 2.0f, target->GetPositionY(), target->GetPositionZ(), true);
+            _events.ScheduleEvent(EVENT_CHECK_EAT_RANGE, 200ms);
         }
     }
 
@@ -594,17 +614,25 @@ struct npc_hogger : public ScriptedAI
         _events.Reset();
 
         me->SetReactState(REACT_PASSIVE);
-        me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_PC);
+        me->RemoveAllAuras();
+        me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_PC | UNIT_FLAG_NON_ATTACKABLE);
         me->StopMoving();
         me->AttackStop();
+        me->CombatStop(true);
 
-        Talk(SAY_BEG);
+        std::list<Creature*> minions;
+        me->GetCreatureListWithEntryInGrid(minions, NPC_HOGGER_MINION, 200.0f);
+        for (Creature* unit : minions)
+            unit->DisappearAndDie();
+
+        Talk(YELL_FINAL_TEXT);
 
         SummonGeneralHammondClay();
         SummonAndromath();
         SummonDumas();
+        SummonRagamuffins();
 
-        _events.ScheduleEvent(EVENT_HAMMOND_GROUP_START_WALKING, 1000);
+        _events.ScheduleEvent(EVENT_HAMMOND_GROUP_START_WALKING, 1s);
     }
 
     void RewardPlayers()
@@ -614,23 +642,26 @@ struct npc_hogger : public ScriptedAI
                 player->RewardPlayerAndGroupAtEvent(NPC_HOGGER, me);
     }
 
+    void HoggerStartAttackPlayers()
+    {
+        for (auto itr : me->getThreatManager().getThreatList())
+            if (Player* player = ObjectAccessor::GetPlayer(*me, itr->getUnitGuid()))
+            {
+                me->SetTarget(player->GetGUID());
+                me->AI()->AttackStart(player);
+                me->setActive(true);
+            }
+    }
+
     void SummonGeneralHammondClay()
     {
-        if (TempSummon* hammond = me->SummonCreature(NPC_GENERAL_HAMMOND_CLAY, generalHammondClayPositions[0]))
+        if (TempSummon* GeneralHammondClay = me->SummonCreature(NPC_GENERAL_HAMMOND_CLAY, GeneralHammondClayCoordinates[0]))
         {
-            _generalHammondGUID = hammond->GetGUID();
-            hammond->CastSpell(hammond, SPELL_TELEPORT_VISUAL_ONLY_1, true);
-            hammond->Mount(DISPLAYID_GENERAL_HAMMOND_CLAYS_MOUNT);
-            hammond->AI()->Talk(YELL_OPENING);
-        }
-        // summon ragamuffins and do text
-        if (TempSummon* ragamuffin1 = me->SummonCreature(NPC_RAGAMUFFIN, ragamuffinPositions[0], TEMPSUMMON_TIMED_DESPAWN, 5000))
-        {
-            ragamuffin1->AI()->Talk(SAY_CLAY);
-        }
-        if (TempSummon* ragamuffin2 = me->SummonCreature(NPC_RAGAMUFFIN, ragamuffinPositions[1], TEMPSUMMON_TIMED_DESPAWN, 5000))
-        {
-            ragamuffin2->AI()->Talk(SAY_WOW);
+            _generalHammondGUID = GeneralHammondClay->GetGUID();
+            GeneralHammondClay->CastSpell(GeneralHammondClay, SPELL_TELEPORT_VISUAL_ONLY_1, true);
+            GeneralHammondClay->Mount(DISPLAYID_GENERAL_HAMMOND_CLAYS_MOUNT);
+            GeneralHammondClay->AI()->Talk(YELL_OPENING);
+            GeneralHammondClay->HandleEmoteCommand(EMOTE_ONESHOT_SHOUT);
         }
     }
 
@@ -639,14 +670,16 @@ struct npc_hogger : public ScriptedAI
         if (GetHammond())
         {
             GetHammond()->SetWalk(true);
-            GetHammond()->GetMotionMaster()->MovePoint(0, generalHammondClayPositions[2], true);
-            _events.ScheduleEvent(EVENT_DISMOUNT_HAMMOND_CLAY, 8500);
+            GetHammond()->GetMotionMaster()->MovePoint(0, GeneralHammondClayCoordinates[2], true);
+            _events.ScheduleEvent(EVENT_RAGAMUFFIN_SAY_CLAY, 2s);
+            _events.ScheduleEvent(EVENT_RAGAMUFFIN_SAY_WOW, 4s + 500ms);
+            _events.ScheduleEvent(EVENT_DISMOUNT_HAMMOND_CLAY, 8s + 500ms);
         }
     }
 
     void SummonAndromath()
     {
-        TempSummon* andromath = me->SummonCreature(NPC_ANDROMATH, andromathPositions[0]);
+        TempSummon* andromath = me->SummonCreature(NPC_ANDROMATH, HighSorcererAndromathCoordinates[0]);
         if (andromath)
         {
             _andromathGUID = andromath->GetGUID();
@@ -659,13 +692,13 @@ struct npc_hogger : public ScriptedAI
         if (GetAndromath())
         {
             GetAndromath()->SetWalk(true);
-            GetAndromath()->GetMotionMaster()->MovePoint(0, andromathPositions[2], true);
+            GetAndromath()->GetMotionMaster()->MovePoint(0, HighSorcererAndromathCoordinates[2], true);
         }
     }
 
     void SummonDumas()
     {
-        TempSummon* dumas = me->SummonCreature(NPC_DUMAS, dumasPositions[0]);
+        TempSummon* dumas = me->SummonCreature(NPC_DUMAS, HighSorcererDumasCoordinates[0]);
         if (dumas)
         {
             _dumasGUID = dumas->GetGUID();
@@ -678,22 +711,40 @@ struct npc_hogger : public ScriptedAI
         if (GetDumas())
         {
             GetDumas()->SetWalk(true);
-            GetDumas()->GetMotionMaster()->MovePoint(0, dumasPositions[2], true);
+            GetDumas()->GetMotionMaster()->MovePoint(0, HighSorcererDumasCoordinates[2], true);
+        }
+    }
+
+    void SummonRagamuffins()
+    {
+        TempSummon* Ragamuffin1 = me->SummonCreature(NPC_RAGAMUFFIN, RagamuffinCoordinates[0], TEMPSUMMON_TIMED_DESPAWN, 10000);
+        if (Ragamuffin1)
+        {
+            me->SetWalk(false);
+            Ragamuffin1->GetMotionMaster()->MovePoint(0, RagamuffinCoordinates[2], true);
+            _Ragamuffin1GUID = Ragamuffin1->GetGUID();
+        }
+        TempSummon* Ragamuffin2 = me->SummonCreature(NPC_RAGAMUFFIN, RagamuffinCoordinates[1], TEMPSUMMON_TIMED_DESPAWN, 10000);
+        if (Ragamuffin2)
+        {
+            me->SetWalk(false);
+            Ragamuffin2->GetMotionMaster()->MovePoint(0, RagamuffinCoordinates[3], true);
+            _Ragamuffin2GUID = Ragamuffin2->GetGUID();
         }
     }
 
     void SummonMinions()
     {
         me->CastStop();
-        Talk(SAY_HOGGER_SUMMON_MINIONS);
-        //DoCastSelf(SPELL_SUMMON_MINIONS, true); This works, but the minions just sit there, and then despawn
+        Talk(YELL_SUMMON_MINIONS_TEXT);
+
         for (float distance : { 0.5f, 1.5f, 2.5f })
         {
             Position hogPos = me->GetPosition();
             GetPositionWithDistInFront(me, distance, hogPos);
             float z = me->GetMap()->GetHeight(me->GetPhaseShift(), hogPos.GetPositionX(), hogPos.GetPositionY(), hogPos.GetPositionZ());
             hogPos.m_positionZ = z;
-            me->SummonCreature(NPC_HOGGER_MINION, hogPos);
+            me->SummonCreature(NPC_HOGGER_MINION, hogPos, TEMPSUMMON_TIMED_DESPAWN, 40 * IN_MILLISECONDS);
         }
         _minionsSummoned = true;
     }
@@ -701,17 +752,17 @@ struct npc_hogger : public ScriptedAI
     void MoveHoggerToFinalPosition()
     {
         me->SetWalk(true);
-        me->GetMotionMaster()->MovePoint(0, hoggerPositions[0]);
+        me->GetMotionMaster()->MovePoint(0, HoggerCoordinates[0]);
     }
 
     void TeleportBack()
     {
         if (GetHammond() && GetAndromath() && GetDumas())
         {
-            GetHammond()->CastSpell(GetHammond(), SPELL_TELEPORT_VISUAL_ONLY_2, true);
+            GetHammond()->CastSpell(GetHammond(), SPELL_TELEPORT_VISUAL_ONLY_1, true);
             GetAndromath()->CastSpell(GetAndromath(), SPELL_TELEPORT_VISUAL_ONLY_2, true);
-            GetDumas()->CastSpell(GetDumas(), SPELL_TELEPORT_VISUAL_ONLY_2, true);
-            DoCastSelf(SPELL_TELEPORT_VISUAL_ONLY_2, true);
+            GetDumas()->CastSpell(GetDumas(), SPELL_TELEPORT_VISUAL_ONLY_1, true);
+            DoCastSelf(SPELL_TELEPORT_VISUAL_ONLY_1, true);
 
             me->DisappearAndDie();
             GetHammond()->DisappearAndDie();
@@ -735,6 +786,16 @@ struct npc_hogger : public ScriptedAI
         return me->GetMap()->GetCreature(_dumasGUID);
     }
 
+    Creature* GetRagamuffin1()
+    {
+        return me->GetMap()->GetCreature(_Ragamuffin1GUID);
+    }
+
+    Creature* GetRagamuffin2()
+    {
+        return me->GetMap()->GetCreature(_Ragamuffin2GUID);
+    }
+
     void UpdateAI(uint32 diff) override
     {
         if (!UpdateVictim() && !_endingSceneActive)
@@ -749,91 +810,139 @@ struct npc_hogger : public ScriptedAI
         {
             switch (eventId)
             {
-            case EVENT_VICIOUS_SLICE:
-                DoCastVictim(SPELL_VICIOUS_SLICE);
-                _events.Repeat(3s);
-                break;
-
-            case EVENT_HAMMOND_GROUP_START_WALKING:
-                MoveGeneralHammondClay();
-                MoveAndromath();
-                MoveDumas();
-                MoveHoggerToFinalPosition();
-                break;
-
-            case EVENT_DISMOUNT_HAMMOND_CLAY:
-                if (GetHammond())
-                {
-                    me->SetFacingToObject(GetHammond());
-
-                    GetHammond()->Dismount();
-                    GetHammond()->GetMotionMaster()->MovePoint(0, generalHammondClayPositions[3], true);
-
-                    _events.ScheduleEvent(EVENT_HOGGER_SAY_GRR, 3000);
-                }
-                break;
-
-            case EVENT_HOGGER_SAY_GRR:
-                Talk(SAY_RAND);
-                _events.ScheduleEvent(EVENT_CLAYS_EXPLAINATION, 3000);
-                break;
-
-            case EVENT_CLAYS_EXPLAINATION:
-                if (GetHammond())
-                    GetHammond()->AI()->Talk(SAY_EXPLAINATION);
-                _events.ScheduleEvent(EVENT_CLAY_SAYS_TAKE_HIM, 4500);
-                break;
-
-            case EVENT_CLAY_SAYS_TAKE_HIM:
-                if (GetHammond())
-                    GetHammond()->AI()->Talk(SAY_TAKE_HIM);
-                _events.ScheduleEvent(EVENT_HOGGER_SAYS_NOO, 2000);
-                break;
-
-            case EVENT_HOGGER_SAYS_NOO:
-                Talk(SAY_FINAL);
-                _events.ScheduleEvent(EVENT_CLAY_SPEAKS_TO_ANDROMATH, 3000);
-                break;
-
-            case EVENT_CLAY_SPEAKS_TO_ANDROMATH:
-                if (GetHammond() && GetAndromath())
-                {
-                    GetHammond()->SetFacingToObject(GetAndromath());
-                    GetAndromath()->SetFacingToObject(GetHammond());
-                    GetHammond()->AI()->Talk(SAY_TO_ANDROMATH);
-                }
-                _events.ScheduleEvent(EVENT_TELEPORT_BACK, 4000);
-                break;
-
-            case EVENT_TELEPORT_BACK:
-                TeleportBack();
-                break;
-
-            case EVENT_CHECK_EAT_RANGE:
-                if (!me->FindNearestCreature(NPC_EATING_TARGET, 3.0f))
-                {
-                    _events.ScheduleEvent(EVENT_CHECK_EAT_RANGE, 200);
+                case EVENT_VICIOUS_SLICE:
+                    DoCastVictim(SPELL_VICIOUS_SLICE);
+                    _events.Repeat(3s);
                     break;
-                }
-                else
-                {
-                    DoCast(SPELL_EATING);
-                    Talk(SAY_EATING);
-                    _events.ScheduleEvent(EVENT_BLOODY_STRIKE, 100);
-                    _isEating = true;
-                }
-                break;
 
-            case EVENT_BLOODY_STRIKE:
-                if (_isEating)
-                {
-                    if (Creature* dummy = me->FindNearestCreature(NPC_EATING_TARGET, 10.0f))
-                        DoCast(dummy, SPELL_BLOODY_STRIKE, true);
-                    _events.ScheduleEvent(EVENT_BLOODY_STRIKE, 1000);
-                }
+                case EVENT_HAMMOND_GROUP_START_WALKING:
+                    MoveGeneralHammondClay();
+                    MoveAndromath();
+                    MoveDumas();
+                    MoveHoggerToFinalPosition();
+                    break;
 
-            default:
-                break;
+                case EVENT_RAGAMUFFIN_SAY_CLAY:
+                    GetRagamuffin2()->AI()->Talk(SAY_CLAY);
+                    GetRagamuffin2()->SetFacingTo(GetRagamuffin2()->GetAngle(me));
+                    _events.ScheduleEvent(EVENT_RUN_1, 5s);
+                    break;
+
+                case EVENT_RUN_1:
+                    GetRagamuffin1()->SetWalk(false);
+                    GetRagamuffin1()->GetMotionMaster()->MovePoint(0, RagamuffinCoordinates[5], true);
+                    break;
+
+                case EVENT_RAGAMUFFIN_SAY_WOW:
+                    GetRagamuffin1()->AI()->Talk(SAY_WOW);
+                    GetRagamuffin1()->SetFacingTo(GetRagamuffin1()->GetAngle(me));
+                    _events.ScheduleEvent(EVENT_RUN_2, 4s);
+                    break;
+
+                case EVENT_RUN_2:
+                    GetRagamuffin2()->SetWalk(false);
+                    GetRagamuffin2()->GetMotionMaster()->MovePoint(0, RagamuffinCoordinates[6], true);
+                    break;
+
+                case EVENT_DISMOUNT_HAMMOND_CLAY:
+                    if (GetHammond())
+                    {
+                        me->SetFacingToObject(GetHammond());
+
+                        GetHammond()->Dismount();
+                        GetHammond()->GetMotionMaster()->MovePoint(0, GeneralHammondClayCoordinates[3], true);
+
+                        _events.ScheduleEvent(EVENT_HOGGER_SAY_GRR, 3s);
+                    }
+                    break;
+
+                case EVENT_HOGGER_SAY_GRR:
+                    Talk(SAY_GRR_TEXT);
+                    _events.ScheduleEvent(EVENT_CLAYS_EXPLAINATION, 3s);
+                    break;
+
+                case EVENT_CLAYS_EXPLAINATION:
+                    if (GetHammond() && GetAndromath() && GetDumas())
+                    {
+                        GetHammond()->AI()->Talk(SAY_EXPLAINATION);
+                        GetHammond()->HandleEmoteCommand(EMOTE_ONESHOT_POINT);
+                        GetHammond()->EmoteWithDelay(4 * IN_MILLISECONDS, EMOTE_ONESHOT_EXCLAMATION);
+
+                        GetAndromath()->SetFacingToObject(me);
+                        GetDumas()->SetFacingToObject(me);
+                    }
+                    _events.ScheduleEvent(EVENT_CLAY_SAYS_TAKE_HIM, 7s + 500ms);
+                    break;
+
+                case EVENT_CLAY_SAYS_TAKE_HIM:
+                    if (GetHammond())
+                    {
+                        GetHammond()->AI()->Talk(SAY_TAKE_HIM);
+                        GetHammond()->HandleEmoteCommand(EMOTE_ONESHOT_TALK);
+                    }
+                    _events.ScheduleEvent(EVENT_HOGGER_SAYS_NOO, 2s);
+                    break;
+
+                case EVENT_HOGGER_SAYS_NOO:
+                    Talk(SAY_NOOOOO_TEXT);
+                    _events.ScheduleEvent(EVENT_CLAY_SPEAKS_TO_ANDROMATH, 3s);
+                    break;
+
+                case EVENT_CLAY_SPEAKS_TO_ANDROMATH:
+                    if (GetHammond() && GetAndromath())
+                    {
+                        GetHammond()->SetFacingToObject(GetAndromath());
+                        GetAndromath()->SetFacingToObject(GetHammond());
+                        GetHammond()->AI()->Talk(SAY_TO_ANDROMATH);
+                        GetHammond()->HandleEmoteCommand(EMOTE_ONESHOT_POINT);
+                        GetHammond()->EmoteWithDelay(2 * IN_MILLISECONDS, EMOTE_ONESHOT_TALK);
+                    }
+                    _events.ScheduleEvent(EVENT_ANDROMATH_TEXT, 3s);
+                    _events.ScheduleEvent(EVENT_TELEPORT_BACK, 7s);
+                    break;
+
+                case EVENT_ANDROMATH_TEXT:
+                    GetAndromath()->AI()->Talk(SAY_TO_HAMMOND_TEXT);
+                    GetAndromath()->HandleEmoteCommand(EMOTE_ONESHOT_TALK);
+                    GetAndromath()->EmoteWithDelay(2 * IN_MILLISECONDS, EMOTE_ONESHOT_SALUTE);
+                    break;
+
+                case EVENT_TELEPORT_BACK:
+                    TeleportBack();
+                    break;
+
+                case EVENT_CHECK_EAT_RANGE:
+                    if (!me->FindNearestCreature(NPC_EATING_TARGET, 3.0f))
+                        _events.ScheduleEvent(EVENT_CHECK_EAT_RANGE, 200ms);
+                    else
+                    {
+                        DoCast(SPELL_EATING);
+                        Talk(EMOTE_EATING_TEXT);
+                        _events.ScheduleEvent(EVENT_BLOODY_STRIKE, 100ms);
+                        _isEating = true;
+                    }
+                    break;
+
+                case EVENT_BLOODY_STRIKE:
+                    if (me->HasAura(SPELL_EATING))
+                    {
+                        if (_isEating)
+                        {
+                            if (Creature* dummy = me->FindNearestCreature(NPC_EATING_TARGET, 10.0f))
+                                DoCast(dummy, SPELL_BLOODY_STRIKE, true);
+                            _events.ScheduleEvent(EVENT_BLOODY_STRIKE, 1s);
+                        }
+                    }
+                    else
+                    {
+                        _isEating = false;
+                        _events.CancelEvent(EVENT_BLOODY_STRIKE);
+                        me->SetReactState(REACT_AGGRESSIVE);
+                        HoggerStartAttackPlayers();
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -843,6 +952,7 @@ struct npc_hogger : public ScriptedAI
 
 private:
     EventMap _events;
+    SummonList summons;
 
     bool _minionsSummoned;
     bool _endingSceneActive;
@@ -852,27 +962,61 @@ private:
     ObjectGuid _generalHammondGUID;
     ObjectGuid _andromathGUID;
     ObjectGuid _dumasGUID;
+    ObjectGuid _Ragamuffin1GUID;
+    ObjectGuid _Ragamuffin2GUID;
 };
 
 /*######
 ## npc_hogger_minion
 ######*/
 
-enum HoggerMinionSpellData
-{
-    SPELL_ADVENTURERS_RUSH = 87402
-};
-
 struct npc_hogger_minion : public ScriptedAI
 {
-    npc_hogger_minion(Creature* creature) : ScriptedAI(creature){ }
+    npc_hogger_minion(Creature* creature) : ScriptedAI(creature) { }
+
+    EventMap _events;
+
+    bool _hoggerHealed;
 
     void Reset() override
     {
+        _events.Reset();
+
+        _hoggerHealed = false;
+
         me->SetReactState(REACT_AGGRESSIVE);
 
-        if (Creature* hogger = me->FindNearestCreature(NPC_HOGGER, 35.0f, true))
-            me->CastSpell(hogger, SPELL_ADVENTURERS_RUSH, true);
+        if (!_hoggerHealed && roll_chance_i(50))
+        {
+            _events.ScheduleEvent(1, 1s);
+            _hoggerHealed = true;
+        }
+    }
+
+    void UpdateAI(uint32 diff) override
+    {
+        if (!UpdateVictim())
+            return;
+
+        _events.Update(diff);
+
+        if (me->HasUnitState(UNIT_STATE_CASTING))
+            return;
+
+        while (uint32 eventId = _events.ExecuteEvent())
+        {
+            switch (eventId)
+            {
+                case 1:
+                    if (Creature* hogger = me->FindNearestCreature(NPC_HOGGER, 35.0f, true))
+                        me->CastSpell(hogger, SPELL_ADVENTURERS_RUSH, true);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        DoMeleeAttackIfReady();
     }
 };
 
